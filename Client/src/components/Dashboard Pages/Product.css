@@ -9,6 +9,13 @@
     margin-left: 100px;
 }
 
+.main-heading{
+    color: white;
+    margin-left: 40%;
+    line-height: 80px;
+    font-size: 85px;
+  }
+
 .searchbutton{
     background-color: #7b09b2 !important;
     color: white;

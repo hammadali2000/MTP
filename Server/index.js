@@ -16,7 +16,12 @@ const db = mysql.createPool({
   password: "codeblocks",
   database: "mtp1",
 });
-
+const corsOptions ={
+  origin:'http://localhost:3000', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 app.use(
   cors({
     origin: ["http://localhost:3000"],
@@ -123,6 +128,18 @@ app.post("/login", (req, res) => {
       res.send({ message: "User dosn't exist" });
     }
   });
+});
+
+app.delete("/api/delete", (req, res) => {
+  const id = req.body.id;
+  const emailid = req.params.email;
+ 
+
+    const sqlDelete= 'DELETE FROM message WHERE email= ?'; 
+    db.query(sqlDelete, emailid,(err,res)=>{
+      if(err)
+      console.log(err);
+    });
 });
 
 app.listen(3001, () => {

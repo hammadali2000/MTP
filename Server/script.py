@@ -14,7 +14,7 @@ review = []
 flag = 0
 print ('arguments:', len(sys.argv), 'arguments.');
 print ('Argument list:', str(sys.argv));
-product_name = sys.argv[1]
+product_name = sys.argv[1];
 print ('Argument :', product_name);
 for row in range(sheet.nrows):  # Iterate over every rows of the file
     if product_name == sheet.cell_value(row, 3):

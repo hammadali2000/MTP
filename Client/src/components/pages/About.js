@@ -102,7 +102,7 @@ export default function About() {
           <Row className="mt-5">
             <Col sm={4}  md={4}>
               <Card style={{ width: '18rem' }} className="main-card-team">
-                <Card.Img className="card-image" variant="top" src="https://images.pexels.com/photos/40997/mona-lisa-leonardo-da-vinci-la-gioconda-oil-painting-40997.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                <Card.Img className="card-image" variant="top" src='./images/img-2.jpg'/>
                 <Card.Body>
                   <Card.Title className="card-title">Hammad Ali Jahangir</Card.Title>
                   <Card.Text>

@@ -4,33 +4,27 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 
 
-export const SidebarData = [
+export const UserSidebarData = [
     {
         title: 'Search Product',
-        path: '/dashboard',
+        path: '/UserDashboard',
         icon: <AiIcons.AiFillHome />,
         cName: 'nav-text2'
     },
 
     {
         title: 'Profile',
-        path: '/profile',
+        path: '/UserProfile',
         icon: <AiIcons.AiFillHome />,
         cName: 'nav-text2'
     },
 
     {
-        title: 'Users',
-        path: '/Users',
-        icon: <IoIcons.IoIosPaper />,
+        title: 'Product',
+        path: '/products',
+        icon: <FaIcons.FaCartPlus />,
         cName: 'nav-text2'
     },
 
-    {
-        title: 'Messages',
-        path: '/Messages',
-        icon: <FaIcons.FaEnvelopeOpenText />,
-        cName: 'nav-text2'
-    }
 
 ]

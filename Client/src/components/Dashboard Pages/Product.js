@@ -31,7 +31,7 @@ import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { SidebarData } from '../SidebarData';
+import { UserSidebarData } from '../UserSidebarData';
 import '../Dashboard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {InputGroup, FormControl, Button, Form} from 'react-bootstrap';
@@ -94,17 +94,18 @@ function products() {
           <Link to='#' className='menu-bars2'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <img src='images/logo.png' className="nav-image2"/>
+          {/* <img src='images/logo.png' className="nav-image2"/> */}
+          <h1 className='main-heading'>MTP</h1>
         </div>
         <nav className={sidebar ? 'nav-menu2 active' : 'nav-menu2'}>
           <ul className='nav-menu-items2' onClick={showSidebar}>
             <li className='navbar-toggle2'>
-              <Link to='/Profile' className='menu-bars2'>
+              <Link to='#' className='menu-bars2'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
             
-            {SidebarData.map((item, index) => {
+            {UserSidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -117,7 +118,7 @@ function products() {
             })}
           </ul>
         </nav>
-        <h1 className="heading">Products Page</h1>
+        {/* <h1 className="heading">Products Page</h1> */}
 
         <div className='searchdiv'>
             <Form.Label>Search Product</Form.Label>

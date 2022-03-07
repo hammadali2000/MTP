@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Table} from 'react-bootstrap';
+import {Container, Row, Table, Dropdown} from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { IconContext } from 'react-icons';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,22 @@ function Messages(){
 
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
+    const [loginStatus, setLoginStatus] = useState("");
+    const history = useHistory();
+    const [emailStatus, setEmailStatus] = useState("");
+
+  const [username, setUsername] = useState("");
+
+
+    const handleLogout = () => {
+      removeUserSession();
+      history.push('/login');
+    };
+
+    const removeUserSession = () => {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
+    };
 
     const[message, setMessage] = useState([]);
     const[item, setItem] = useState({});
@@ -23,6 +39,28 @@ function Messages(){
             setMessage(response.data)
         })
     });
+
+    
+  const setUserSession = (token, user) => {
+    sessionStorage.setItem('token', token);
+    sessionStorage.setItem('user', JSON.stringify(user));
+  };
+
+  Axios.defaults.withCredentials = true;
+   const getUser = () => {
+    const userStr = sessionStorage.getItem("user");
+    if (userStr) return JSON.parse(userStr);
+    else return null;
+  };
+  useEffect(() => {
+    Axios.get("http://localhost:3001/login").then((response) => {
+      if (response.data.loggedIn == true) {
+        setLoginStatus(response.data.user[0].uname);
+        setEmailStatus(response.data.user[0].email);
+        setUsername(response.data.user[0].name);
+      }
+    });
+  }, []);
 
 
     
@@ -35,12 +73,35 @@ function Messages(){
           <Link to='#' className='menu-bars2'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <img src='images/logo.png' className="nav-image2"/>
+          {/* <img src='images/logo.png' className="nav-image2"/> */}
+          <h1 className='main-heading'>MTP</h1>
+          <div className="main-div">
+              <div>
+                <Dropdown>
+                  <Dropdown.Toggle className="login-name" id="dropdown-basic">
+                    {loginStatus}
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item className="item-name" href="/Profile">
+                      My Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      className="item-name"
+                      onClick={handleLogout}
+                      href="#/action-2"
+                    >
+                      Logout
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+            </div>
         </div>
         <nav className={sidebar ? 'nav-menu2 active' : 'nav-menu2'}>
           <ul className='nav-menu-items2' onClick={showSidebar}>
             <li className='navbar-toggle2'>
-              <Link to='/Profile' className='menu-bars2'>
+              <Link to='#' className='menu-bars2'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>

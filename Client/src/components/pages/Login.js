@@ -32,7 +32,7 @@ export default function Login() {
       if (response.data.message) {
         alert(response.data.message);
       } else {
-        history.push("/Profile");
+        history.push("/Dashboard");
       }
     });
   }
@@ -44,7 +44,7 @@ export default function Login() {
       if (response.data.message) {
         alert(response.data.message);
       } else {
-        history.push("/Dashboard");
+        history.push("/UserDashboard");
         console.log(response);
       }
     });

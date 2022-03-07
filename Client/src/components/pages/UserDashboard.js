@@ -4,7 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavDropdown, Button, Dropdown } from 'react-bootstrap';
-import { SidebarData } from '../SidebarData';
+import { UserSidebarData } from '../UserSidebarData';
 import '../Dashboard.css';
 import { IconContext } from 'react-icons';
 import Login from './Login';
@@ -166,7 +166,7 @@ function Dashboard() {
                   <AiIcons.AiOutlineClose />
                 </Link>
               </li>
-              {SidebarData.map((item, index) => {
+              {UserSidebarData.map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
                     <Link to={item.path}>

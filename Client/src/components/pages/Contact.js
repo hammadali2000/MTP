@@ -76,7 +76,7 @@ export default function Contact() {
                             </Form.Text>
                         </Form.Group>
 
-                        <Form.Group controlId="formFileLg" className="mb-3">
+                        {/* <Form.Group controlId="formFileLg" className="mb-3">
                             <Form.Label>Attachments  (Optional)</Form.Label><br/>
                             <Form.Control className="input-file"
                              type="file"
@@ -85,7 +85,7 @@ export default function Contact() {
                                 setFileReg(e.target.value);
                               }}
                                />
-                        </Form.Group><br />
+                        </Form.Group><br /> */}
                     
                         <Button className="button-submit" type="submit" onClick={sendMessage}>
                             Submit

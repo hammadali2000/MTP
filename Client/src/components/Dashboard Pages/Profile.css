@@ -11,6 +11,13 @@ h2{
     align-items: flex-start;
 }
 
+.main-heading{
+    color: white;
+    margin-left: 40%;
+    line-height: 80px;
+    font-size: 85px;
+  }
+
 .image{
     border-radius: 50%;
     width: 40%;

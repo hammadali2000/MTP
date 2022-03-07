@@ -5,6 +5,8 @@
 
 .main-div{
   display: flex;
+  margin-right: 50px;
+  justify-content: right;
 }
 
 .login-name{
@@ -27,11 +29,19 @@
   align-items: right;
 }
 
-.nav-image2{
-    width: 10%;
+/* .nav-image2{
+    width: 30%;
     height: 100%;
-    margin-left: 20%;
-    background-color: #f5f5f5;
+    margin-left: 40%;
+    background-color: #142baf;
+    display: none;
+} */
+
+.main-heading{
+  color: white;
+  margin-left: 40%;
+  line-height: 80px;
+  font-size: 85px;
 }
 
 .menu-bars2 {
@@ -43,13 +53,14 @@
 .nav-menu2 {
   background-color: #060b26;
   width: 250px;
-  height: 100vh;
+  height: 110vh;
   display: flex;
   justify-content: center;
   position: fixed;
   top: 0;
   left: -100%;
   transition: 850ms;
+  z-index: 1;
 }
 
 .nav-menu2.active {
@@ -97,4 +108,31 @@
 
 span {
   margin-left: 16px;
+}
+
+.search-product{
+  margin-left: 20%;
+  margin-top: 100px;
+}
+
+
+.search-button{
+  color: white;
+  padding: 7px 22px;
+  background-color: #7b09b2;
+  border: none;
+  margin-left: 20px;
+  box-shadow: 1px 2px 4px gray;
+}
+
+.search-button:hover{
+  background-color: white;
+  color: #7b09b2;
+  border: 1px solid #7b09b2;
+  transition: .3s all;
+}
+
+.output{
+  margin-left: 20%;
+  margin-top: 50px;
 }

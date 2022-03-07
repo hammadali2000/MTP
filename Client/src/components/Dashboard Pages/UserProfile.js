@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { SidebarData } from '../SidebarData';
+import { UserSidebarData } from '../UserSidebarData';
 import {Container, Row, Col, Form, Button, Dropdown} from 'react-bootstrap';
 import '../Dashboard.css';
 import "./Profile.css";
@@ -11,7 +11,7 @@ import Axios from "axios";
 import { useHistory } from "react-router";
 
 
-function Profile() {
+function UserProfile() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -105,7 +105,7 @@ function Profile() {
               </Link>
             </li>
             
-            {SidebarData.map((item, index) => {
+            {UserSidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -192,4 +192,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UserProfile;
