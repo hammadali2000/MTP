@@ -130,16 +130,30 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.delete("/api/delete", (req, res) => {
-  const id = req.body.id;
-  const emailid = req.params.email;
+// app.delete("/api/delete", (req, res) => {
+//   const id = req.body.id;
+//   const emailid = req.params.email;
  
 
-    const sqlDelete= 'DELETE FROM message WHERE email= ?'; 
-    db.query(sqlDelete, emailid,(err,res)=>{
-      if(err)
+//     const sqlDelete= 'DELETE FROM message WHERE email= ?'; 
+//     db.query(sqlDelete, emailid,(err,res)=>{
+//       if(err)
+//       console.log(err);
+//     });
+// });
+
+app.get("/data", (req, res) => {
+  const brand = req.body.brand;
+  const Weekly_sales = req.body.Weekly_sales;
+
+  const sqlSelect = "SELECT * FROM dataset  ;";
+  db.query(sqlSelect, (err, result) => {
+    if (err) {
       console.log(err);
-    });
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.listen(3001, () => {

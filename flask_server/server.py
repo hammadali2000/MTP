@@ -10,16 +10,6 @@ import sys
 app = Flask(__name__)
 
 
-
-
-# @app.route("/members",methods=['POST'])
-# def test():
-#     print("hassan")
-#     data = request.get_json()
-#     print(data);
-#     return "test"
-
-
 @app.route("/member",methods=['POST'])
 def member():
     data = request.get_json()

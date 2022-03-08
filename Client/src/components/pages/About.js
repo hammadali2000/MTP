@@ -9,6 +9,9 @@ import * as AiIcons from 'react-icons/ai';
 import '../About.css';
 import Aos from "aos";
 import "aos/dist/aos.css";
+import hammad from './my.png';
+import aqib from './aqib.png';
+import afaq from './afaq.jpeg';
 
 import Navbar from "../Navbar";
 
@@ -40,7 +43,7 @@ export default function About() {
               <Col ls={12} sm={6}>
                   <Container className='left-text'>
                       <h3>The Opportunities for Sellers on Amazon are Incredible</h3>
-                      <p>There’s no question about who the biggest fish in the e-commerce sea is; Amazon dominates the marketplace. We built Helium 10 to help everyone capitalize on the Amazon opportunity, from seasoned entrepreneurs to bustling enterprises to anyone who just wants to be their own boss.</p>
+                      <p>There’s no question about who the biggest fish in the e-commerce sea is; Amazon dominates the marketplace. We built MTP to help everyone capitalize on the Ecommerce opportunity, from seasoned entrepreneurs to bustling enterprises to anyone who just wants to be their own boss.</p>
                   </Container>
               </Col>
 
@@ -102,12 +105,12 @@ export default function About() {
           <Row className="mt-5">
             <Col sm={4}  md={4}>
               <Card style={{ width: '18rem' }} className="main-card-team">
-                <Card.Img className="card-image" variant="top" src='./images/img-2.jpg'/>
+                <Card.Img className="card-image" variant="top" src={hammad}/>
                 <Card.Body>
                   <Card.Title className="card-title">Hammad Ali Jahangir</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                   Team Leader <br />
+                   Full Stack Developer
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -116,12 +119,12 @@ export default function About() {
 
             <Col sm={4}  md={4}>
               <Card style={{ width: '18rem' }} className="main-card-team">
-                <Card.Img className="card-image" variant="top" src="https://images.pexels.com/photos/40997/mona-lisa-leonardo-da-vinci-la-gioconda-oil-painting-40997.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                <Card.Img className="card-image" variant="top" src={aqib} />
                 <Card.Body>
                   <Card.Title>Aqib Ali</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    Team Member  <br />
+                    Full Stack Developer
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -130,12 +133,12 @@ export default function About() {
 
             <Col sm={4}  md={4}>
               <Card style={{ width: '18rem' }} className="main-card-team" >
-                <Card.Img className="card-image" variant="top" src="https://images.pexels.com/photos/40997/mona-lisa-leonardo-da-vinci-la-gioconda-oil-painting-40997.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                <Card.Img className="card-image" variant="top" src={afaq} />
                 <Card.Body>
                   <Card.Title>Afaq Tariq</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    Team Member <br />
+                    Python Developer
                   </Card.Text>
                 </Card.Body>
               </Card>

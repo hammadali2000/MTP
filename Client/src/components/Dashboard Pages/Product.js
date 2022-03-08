@@ -1,167 +1,140 @@
-// import React from 'react';
-// import '../../App.css';
-
-// function Product() {
-//     return (
-//         <div className="home">
-//             <h1>Product</h1>
-            
-//         </div>
-//     )
-// }
-
-// export default Product
-
-// import React from 'react'
-// import '../../App.css';
-
-// function Profile() {
-//     return (
-//         <div className="home">
-//             <h1>Profile here</h1>
-            
-//         </div>
-//     )
-// }
-
-// export default Profile
-
-
-import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { UserSidebarData } from '../UserSidebarData';
-import '../Dashboard.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {InputGroup, FormControl, Button, Form} from 'react-bootstrap';
-import { IconContext } from 'react-icons';
-import {ResponsiveContainer, LineChart, Line, XAxis, YAxis} from 'recharts';
+import React, { useState } from "react";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { UserSidebarData } from "../UserSidebarData";
+import "../Dashboard.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
+import { IconContext } from "react-icons";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Area,
+  Bar,
+  ComposedChart,
+} from "recharts";
 import "./Product.css";
-
-const pdata = [
-  {
-    name: 'Python',
-    student: 13,
-    fees: 10
-  },
-  {
-    name: 'Javascript',
-    student: 15,
-    fees: 12
-  },
-  {
-    name: 'PHP',
-    student: 5,
-    fees: 10
-  },
-  {
-    name: 'Java',
-    student: 10,
-    fees: 5
-  },
-  {
-    name: 'C#',
-    student: 9,
-    fees: 4
-  },
-  {
-    name: 'C++',
-    student: 10,
-    fees: 8
-  },
-];
-
+import Axios from "axios";
+import Table from "react-bootstrap/Table";
 
 function products() {
   const [sidebar, setSidebar] = useState(false);
-
+  const [items, setitems] = useState({});
   const showSidebar = () => setSidebar(!sidebar);
+  const [search, SetSearch] = useState("");
+  const [data, setData] = useState([]);
 
+  const getData = () => {
+    Axios.get("http://localhost:3001/data").then((res) => {
+      setData(res.data);
+    });
+    console.log("Success");
+  };
 
+  const searchText = (e) => {
+    SetSearch(e.target.value);
+  };
+  let dataSearch = data.filter((val) => {
+    return Object.keys(val).some((key) =>
+      val[key]
+        .toString()
+        .toLowerCase()
+        .includes(search.toString().toLowerCase())
+    );
+  });
   // const [file, setFile] = useState(initialState: null);
 
   const onInputChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
 
   return (
-   
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar2'>
-            
-          
-          <Link to='#' className='menu-bars2'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-          {/* <img src='images/logo.png' className="nav-image2"/> */}
-          <h1 className='main-heading'>MTP</h1>
-        </div>
-        <nav className={sidebar ? 'nav-menu2 active' : 'nav-menu2'}>
-          <ul className='nav-menu-items2' onClick={showSidebar}>
-            <li className='navbar-toggle2'>
-              <Link to='#' className='menu-bars2'>
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            
-            {UserSidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-                
-              );
-            })}
-          </ul>
-        </nav>
-        {/* <h1 className="heading">Products Page</h1> */}
+    <IconContext.Provider value={{ color: "#fff" }}>
+      <div className="navbar2">
+        <Link to="#" className="menu-bars2">
+          <FaIcons.FaBars onClick={showSidebar} />
+        </Link>
+        {/* <img src='images/logo.png' className="nav-image2"/> */}
+        <h1 className="main-heading">MTP</h1>
+      </div>
+      <nav className={sidebar ? "nav-menu2 active" : "nav-menu2"}>
+        <ul className="nav-menu-items2" onClick={showSidebar}>
+          <li className="navbar-toggle2">
+            <Link to="#" className="menu-bars2">
+              <AiIcons.AiOutlineClose />
+            </Link>
+          </li>
 
-        <div className='searchdiv'>
-            <Form.Label>Search Product</Form.Label>
-            <InputGroup className="mb-3">
-                <FormControl
-                  placeholder="Enter Product Name"
-                  aria-label="Recipient's username"
-                  aria-describedby="basic-addon2"
-                />
-                <Button className='searchbutton' variant="outline-secondary" id="button-addon2">
-                  Button
-                </Button>
-            </InputGroup>
-        </div>
-        
-        <div className='graph-container'>
-        <ResponsiveContainer className='graph' width="100%" aspect={3}>
-            <LineChart data={pdata} width={500} height={300} margin={{top:5, right:100, left:20, bottom:5}}>
-              <XAxis dataKey='name' interval={'preserveStartEnd'}/>
-              <YAxis />
-              <Line dataKey="student" />
-            </LineChart>
-        </ResponsiveContainer>
+          {UserSidebarData.map((item, index) => {
+            return (
+              <li key={index} className={item.cName}>
+                <Link to={item.path}>
+                  {item.icon}
+                  <span>{item.title}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-        <ResponsiveContainer className='graph' width="100%" aspect={3}>
-            <LineChart data={pdata} width={500} height={300} margin={{top:5, right:100, left:20, bottom:5}}>
-              <XAxis dataKey='name' interval={'preserveStartEnd'}/>
-              <YAxis />
-              <Line dataKey="student" />
-            </LineChart>
-        </ResponsiveContainer>
+      <div className="searchdiv" style={{marginLeft:'200px',}}>
+        <h5>Input product to search:</h5>
+        <input
+          type="text"
+          placeholder="Search...."
+          value={search}
+          onChange={searchText.bind(this)}
+          style={{
+            justifyContent: "center",
+          }}
+        />
+      </div>
+      <div style={{marginLeft: '200px'}}>
+        <Button
+          onClick={getData}
+          style={{
+            color: "white",
+            padding: "5px 22px",
+            "background-color": "#8F18B3",
+            margin: "3px",
+          }}
+        >
+          Display Products
+        </Button>
 
-        <ResponsiveContainer className='graph' width="100%" aspect={3}>
-            <LineChart data={pdata} width={500} height={300} margin={{top:5, right:100, left:20, bottom:5}}>
-              <XAxis dataKey='name' interval={'preserveStartEnd'}/>
-              <YAxis />
-              <Line dataKey="student" />
-            </LineChart>
-        </ResponsiveContainer>
-        </div>
-        
-      </IconContext.Provider>
-    
+        {dataSearch.map((val, index) => {
+          return (
+            <Table striped bordered hover size="sm">
+              <thead>
+                <tr>
+                  <th>asins</th>
+                  <th>brand</th>
+                  <th>name</th>
+                  <th>Price</th>
+                  <th>Date</th>
+                  <th>Weekly_Sales</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>{val.asins}</th>
+                  <th>{val.brand}</th>
+                  <th>{val.name}</th>
+                  <th>{val.Price}</th>
+                  <th>{val.Date}</th>
+                  <th>{val.Weekly_Sales}</th>
+                </tr>
+              </tbody>
+            </Table>
+          );
+        })}
+      </div>
+    </IconContext.Provider>
   );
 }
 
